@@ -17,10 +17,10 @@
 					<input type="text" name="name" value="{{$role->name}}" class="form-control">
 				</div>
 				
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="salary">Salary</label>
 					<input type="number" name="salary" value="{{$role->salary}}" class="form-control">
-				</div>
+				</div> -->
 				
 				<div class="form-group">
 					<label for="department">Select a department</label>

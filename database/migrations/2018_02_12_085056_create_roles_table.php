@@ -17,7 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
 			$table->string('name');
 			$table->string('slug');
-			$table->bigInteger('salary');
+			// $table->bigInteger('salary');
 			$table->integer('department_id');
             $table->timestamps();
         });

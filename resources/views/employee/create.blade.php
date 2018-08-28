@@ -10,7 +10,7 @@
 	<form action="{{ route('employees.store') }}" method="POST">
 			{{ csrf_field() }}
 		
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-6">
 			<label for="name">Name: </label>
 			<input type="text" name="name" class="form-control">		
 		</div>
@@ -67,7 +67,7 @@
 	<div class="form-group col-lg-3">
 		<td>
 			<div class="input-group date">
-				<label for="datestarted">Date Started: </label>
+				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
   				<input type="text" name="datestarted"  id="date" class="form-control"><span class="input-group-addon"></i></span>
 			</div>
 		</td>	

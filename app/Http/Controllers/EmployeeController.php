@@ -8,6 +8,8 @@ use App\Department;
 use App\Payroll;
 use Session;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 
@@ -42,6 +44,8 @@ class EmployeeController extends Controller
 		}
         return view('employee.create')->with('roles',$roles);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -92,6 +96,12 @@ class EmployeeController extends Controller
 		
 		$request->session()->flash('status', 'New Employee created');
 		return redirect()->route('employees.index');
+		try{
+    do_someting();
+} catch(\Exception $e) {
+    echo "ERROR";
+}
+
     }
 
     /**
@@ -129,6 +139,7 @@ class EmployeeController extends Controller
         $employee=Employee::findOrFail($id);
 		$this->validate($request,[
 			'name' => 'required|max:255',
+			'slug' =>str_slug($request->name),
 			'idnum' => 'required',
 			'email' => 'required|email',
 			'salary' => 'required',
@@ -152,6 +163,12 @@ class EmployeeController extends Controller
 		$employee->password = $request->password;
 		$employee->role_id  = $request->role_id;		
 		$employee->save();
+		$users = \Auth::user();
+		$users ->name = $employee->name;
+		$users ->email = $employee->email;
+		$users ->password = $employee->password;
+		$users ->role = 'employee';	
+		$users->save();
 		
 		$request->session()->flash('status', 'New Employee created');
 		return redirect()->route('employees.index');

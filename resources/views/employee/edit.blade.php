@@ -1,10 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 
 @section('content')
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet"/>
 	<div class="col-lg-12">
 		<h1 class="page-header">Update Employee: {{$employee->name }}</h1>
 	</div>
@@ -31,20 +30,25 @@
 			<label for="idnum">ID Number: </label>
 			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control">		
 		</div>
+
+		<div class="form-group col-md-2">
+			<label for="password">Password: </label>
+			<input type="password" name="password" value="{{ $employee->password}}" class="form-control">		
+		</div>
 		
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-10">
 			<label for="address">Address: </label>
 			<input type="text" name="address" value="{{ $employee->address }}" class="form-control">		
 		</div>
 		
 		<div class="form-group col-lg-3">
 			<label for="salary">Salary: </label>
-			<input type="text" name="salary" value="{{ $employee->salary}}" class="form-control">		
+			<input type="text" name="salary" value="{{ $employee->salary}}" class="form-control" >		
 		</div>
 		
 		<div class="form-group col-lg-3">
 			<label for="role">Select a Role</label>
-			<select name="role_id"  cols="5" rows="5" class="form-control">
+			<select name="role_id"  cols="5" rows="5" class="form-control" >
 				@foreach($roles as $role)
 					<option value="{{ $role->id}}"
 						@if($employee->role->id == $role->id)
@@ -57,7 +61,7 @@
 					
 		<div class="form-group col-lg-3">
 			<label for="full_time">Position:</label>
-			<select name="full_time" id="full_time" class="form-control">
+			<select name="full_time" id="full_time" class="form-control" >
 				<option value="1">Full-Time</option>
 				<option value="0">Part-Time</option>					
 			</select>
@@ -75,7 +79,7 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: </label>
-  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control"><span class="input-group-addon"></i></span>
+  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" ><span class="input-group-addon"></i></span>
 			</div>
 		</td>
 
@@ -87,10 +91,5 @@
 			<button class="btn btn-success" type="submit" >Update Changes</button>
 		</div>
 	</form>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script  type="text/javascript" src="{{asset('assets/js/dateTimePicker.js')}}"> </script>
 
 @endsection

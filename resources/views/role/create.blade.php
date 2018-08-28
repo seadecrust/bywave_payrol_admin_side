@@ -2,24 +2,23 @@
 
 
 @section('content')
-
-	<hr>	
-		<h1 class="text-center">Roles</h1>	
-	<hr>   	   
+	
+		<h1 class="page-header">New Role</h1>	
+	  	   
 	<form action ="{{ route('roles.store') }}" method="POST">
 		{{ csrf_field() }}
 		
 		<div class="form-group col-lg-6">
-			<label for="name">Name</label>
+			<label for="name">Role Name</label>
 			<input type="text" name="name" class="form-control">
 		</div>
 		
-		<div class="form-group col-lg-6">
+		<!-- <div class="form-group col-lg-6">
 			<label for="salary">Salary</label>
 			<input type="number" name="salary" class="form-control">
-		</div>
+		</div> -->
 		
-		<div class="form-group col-lg-12">
+		<div class="form-group col-lg-6	">
 			<label for="department">Select a department</label>
 			<select name="department_id"  cols="5" rows="5" class="form-control">
 				@foreach($departments as $department)

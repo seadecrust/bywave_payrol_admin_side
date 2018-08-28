@@ -1,4 +1,6 @@
-<nav class="navbar navbar-default navbar-static-top">
+<script type="text/javascript" src="{{asset('js/date_time.js')}}"></script>
+
+<nav class="navbar navbar-default navbar-static-top" style="background-color:#ffddc1;">
 	<div class="container">
 		<div class="navbar-header">
 
@@ -21,7 +23,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="{{ route('departments.index') }}">Departments</a></li>
 				<li><a href="{{ route('roles.index') }}">Roles</a></li>
-				<li><a href="{{ route('employees.index') }}">Payroll</a></li>				
+				<li><a href="{{ route('employees.index') }}">Employees</a></li>	
+				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
+                 <script type="text/javascript">window.onload = date_time('date_time');</script></a>
+                </li>
 			</ul>
 
 			<!-- Right Side Of Navbar -->
@@ -52,6 +57,7 @@
 							</li>
 						</ul>
 					</li>
+					
 				@endguest
 			</ul>
 		</div>

@@ -12,7 +12,7 @@
 		<thead>		
 			<th>Name</th>
 			<th>Department</th>
-			<th>Salary</th>
+			<!-- <th>Salary</th> -->
 			<th>Edit</th>
 			<th>Trash</th>
 		</thead>	
@@ -24,7 +24,7 @@
 						<td><a href="{{ route('roles.show', ['slug' => $role->slug]) }}" >{{ $role->name}}</a></td>						
 						
 						<td>{{ $role->department->name }}</td>
-						<td>{{ $role->salary }}</td>	
+						<!-- 	 -->	
 						<td>
 							<a href="{{ route('roles.edit', ['id' => $role->id]) }}" class="btn btn-info">Edit</a>
 						</td>

@@ -50,13 +50,13 @@ class RoleController extends Controller
     {
         $this->validate($request,[
 			'name' =>'required|max:50',
-			'salary' => 'nullable|required',
+			// 'salary' => 'nullable|required',
 			'department_id' => 'required'
 		]);
 		
 		Role::create([
 			'name' => $request->name,
-			'salary' => $request->salary,
+			// 'salary' => $request->salary,
 			'department_id' => $request->department_id,
 			'slug'=>str_slug($request->name)
 		]);
@@ -101,12 +101,12 @@ class RoleController extends Controller
 		
 		$this->validate($request,[
 			'name' =>'required|max:50',
-			'salary' => 'nullable|required',
+			// 'salary' => 'nullable|required',
 			'department_id' => 'required'
 		]);
 		
 		$role->name = $request->name;
-		$role->salary = $request->salary;
+		// $role->salary = $request->salary;
 		$role->department_id = $request->department_id;
 		$role->slug = str_slug($request->name);
 	

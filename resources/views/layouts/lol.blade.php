@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+
+@section('content')
 <nav class="navbar navbar-default navbar-static-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -21,8 +25,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="{{ route('departments.index') }}">asd</a></li>
 				<li><a href="{{ route('roles.index') }}">Roles</a></li>
-				<li><a href="{{ route('employees.index') }}">Payroll</a></li>				
+				<li><a href="{{ route('employees.index') }}">Payroll</a></li>
+
 			</ul>
+
 
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
@@ -57,3 +63,4 @@
 		</div>
 	</div>
 </nav>
+@endsection
