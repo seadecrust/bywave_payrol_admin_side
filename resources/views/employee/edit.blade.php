@@ -14,31 +14,31 @@
 			
 		<div class="form-group col-md-6">
 			<label for="name">Name: </label>
-			<input type="text" name="name" value="{{ $employee->name}}" class="form-control">		
+			<input type="text" name="name" value="{{ $employee->name}}" class="form-control" readonly="readonly">		
 		</div>
 		
 		<div class="form-group col-md-2">
 			<label for="email">Email: </label>
-			<input type="email" name="email" value="{{ $employee->email}}" class="form-control">		
+			<input type="email" name="email" value="{{ $employee->email}}" class="form-control" readonly="readonly">		
 		</div>
 		<div class="form-group col-md-2">
 			<label for="phone">Contact: </label>
-			<input type="text" name="phone" value="{{ $employee->phone}}" class="form-control">		
+			<input type="text" name="phone" value="{{ $employee->phone}}" class="form-control" readonly="readonly">		
 		</div>
 		
 		<div class="form-group col-md-2">
 			<label for="idnum">ID Number: </label>
-			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control">		
+			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control" readonly="readonly">		
 		</div>
 
 		<div class="form-group col-md-2">
 			<label for="password">Password: </label>
-			<input type="password" name="password" value="{{ $employee->password}}" class="form-control">		
+			<input type="password" name="password" value="{{ $employee->password}}" class="form-control" readonly="readonly">		
 		</div>
 		
 		<div class="form-group col-md-10">
 			<label for="address">Address: </label>
-			<input type="text" name="address" value="{{ $employee->address }}" class="form-control">		
+			<input type="text" name="address" value="{{ $employee->address }}" class="form-control" readonly="readonly">		
 		</div>
 		
 		<div class="form-group col-lg-3">
@@ -79,7 +79,7 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: </label>
-  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" ><span class="input-group-addon"></i></span>
+  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" ><span class="input-group-addon" readonly="readonly"></i></span>
 			</div>
 		</td>
 

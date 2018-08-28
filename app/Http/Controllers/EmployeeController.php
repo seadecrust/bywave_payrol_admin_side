@@ -94,7 +94,7 @@ class EmployeeController extends Controller
 		$users->save();
 		
 		
-		$request->session()->flash('status', 'New Employee created');
+		$request->session()->flash('status', 'New Employee Created');
 		return redirect()->route('employees.index');
 		try{
     do_someting();
@@ -163,15 +163,15 @@ class EmployeeController extends Controller
 		$employee->password = $request->password;
 		$employee->role_id  = $request->role_id;		
 		$employee->save();
-		$users = \Auth::user();
-		$users ->name = $employee->name;
-		$users ->email = $employee->email;
-		$users ->password = $employee->password;
-		$users ->role = 'employee';	
-		$users->save();
+		// $users = \Auth::user();
+		// $users ->name = $employee->name;
+		// $users ->email = $employee->email;
+		// $users ->password = $employee->password;
+		// $users ->role = 'employee';	
+		// $users->save();
 		
 		$request->session()->flash('status', 'New Employee created');
-		return redirect()->route('employees.index');
+		return redirect()->route('employees.index'); 
     }
 
     /**

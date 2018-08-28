@@ -2,7 +2,7 @@
 
 
 @section('content')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	<div class="col-lg-12">
 		<h1 class="page-header">New Employee</h1>
 	</div>
@@ -68,7 +68,7 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
-  				<input type="text" name="datestarted"  id="date" class="form-control"><span class="input-group-addon"></i></span>
+  				<input type="text" name="datestarted"  id="datepicker" class="form-control"><span class="input-group-addon"></i></span>
 			</div>
 		</td>	
 	</div>
@@ -80,6 +80,5 @@
 	</form>
 	
 
-
-
+ 
 @endsection
