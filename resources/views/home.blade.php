@@ -130,7 +130,7 @@
 			@if($employees->count()> 0)
 				@foreach($employees as $employee)
 					<tr>		
-						<td>{{ $employee->id }}</td>
+						<td>{{ $employee->idnum }}</td>
 						<td>{{ $employee->name }}</td>
 						{{-- <td>{{ $employee->created_at->toDateString() }}</td> --}}
 						{{-- <td>{{ $employee->role->name }}</td> --}}

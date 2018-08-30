@@ -13,8 +13,8 @@
 			</button>
 
 			<!-- Branding Image -->
-			<a class="navbar-brand" href="{{ url('/') }}">
-				{{ config('app.name', 'Payroll') }}
+			<a class="navbar-brand" >
+				<img src="assets/img/company.png" style="height: 25px" alt="Company Logo"> 
 			</a>
 		</div>
 

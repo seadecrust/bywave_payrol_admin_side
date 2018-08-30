@@ -9,6 +9,7 @@ use App\Payroll;
 use Session;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 
 
 use Illuminate\Http\Request;
@@ -43,7 +44,10 @@ class EmployeeController extends Controller
 			return redirect()->back();
 		}
         return view('employee.create')->with('roles',$roles);
+
+        
     }
+
 
 
 
@@ -126,6 +130,8 @@ class EmployeeController extends Controller
         return view('employee.edit', ['employee'=>Employee::find($id),
 											'roles'=>Role::all()]);
     }
+
+
 
     /**
      * Update the specified resource in storage.

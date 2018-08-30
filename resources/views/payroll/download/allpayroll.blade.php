@@ -23,7 +23,7 @@
 				
 			@if($employee->full_time)
 				<p><b>Full-Time</b> :  Yes</p>
-				<p><b>Base Salary</b>: {{ $employee->role->salary }}</p>
+				<p><b>Base Salary</b>: {{ $employee->salary }}</p>
 			@else
 				<p><b>Part-Time</b> : Yes</p>
 				<p><b>Base Salary</b>: 0</p>
