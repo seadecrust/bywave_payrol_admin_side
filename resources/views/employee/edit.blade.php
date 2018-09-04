@@ -52,7 +52,7 @@
 		
 		<div class="form-group col-lg-3">
 			<label for="role">Select a Role</label>
-			<select name="role_id"  cols="5" rows="5" class="form-control">
+			<select name="role_id"  cols="5" rows="5" class="form-control" {{ $employee->role == "admin" ? '' : 'disabled' }}> 		
 				@foreach($roles as $role)
 					<option value="{{ $role->id}}"
 						@if($employee->role->id == $role->id)
@@ -61,14 +61,21 @@
 					>{{ $role->name }}</option>
 				@endforeach
 			</select>
+			@if( $employee->role != "admin" )
+			 		<input type="hidden" name="role_id" value="{{ $role->id }}" class="form-control">	
+			 @endif
 		</div>
 					
 		<div class="form-group col-lg-3">
 			<label for="full_time">Position:</label>
-			<select name="full_time" id="full_time" class="form-control" >
+
+			<select name="full_time" id="full_time" class="form-control" {{ $employee->role == "admin" ? '' : 'disabled' }}>
 				<option value="1">Full-Time</option>
 				<option value="0">Part-Time</option>					
 			</select>
+		@if( $employee->role != "admin" )
+			 		<input type="hidden" name="full_time" value="{{ $role->id }}" class="form-control">	
+			 @endif
 		</div>
 
 		<!-- <div class="form-group col-md-3">
