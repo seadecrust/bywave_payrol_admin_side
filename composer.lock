@@ -3356,6 +3356,7 @@
         },
         {
             "name": "phpunit/phpunit",
+
             "version": "6.5.12",
             "source": {
                 "type": "git",
@@ -4098,6 +4099,7 @@
             ],
             "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
             "time": "2018-08-24T14:08:13+00:00"
+
         },
         {
             "name": "theseer/tokenizer",

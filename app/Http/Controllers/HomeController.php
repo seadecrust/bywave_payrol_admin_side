@@ -44,6 +44,7 @@ class HomeController extends Controller
         return view('/userhome', [
                     'user_employee' => $employee
             ]);
+
     }
 
        

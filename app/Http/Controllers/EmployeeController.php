@@ -9,8 +9,7 @@ use App\Payroll;
 use Session;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -43,8 +42,8 @@ class EmployeeController extends Controller
 			return redirect()->back();
 		}
         return view('employee.create')->with('roles',$roles);
-    }
 
+    }
 
 
     /**
@@ -94,16 +93,16 @@ class EmployeeController extends Controller
 		$payroll->employee_id = $employee->id;
 		$payroll->save();
 		$employee->save();
-		
-		
-		
+
 		$request->session()->flash('status', 'New Employee created');
+
 		return redirect()->route('employees.index');
+
 		try{
-    do_someting();
-} catch(\Exception $e) {
-    echo "ERROR";
-}
+		    do_someting();
+		} catch(\Exception $e) {
+		    echo "ERROR";
+		}
 
     }
 
@@ -167,6 +166,7 @@ class EmployeeController extends Controller
 		$employee->role_id  = $request->role_id;		
 		$employee->save();
 
+
 		$user = User::findOrFail($employee->fk_employee);
 		$user->name = $employee->name;
 		$user->email = $employee->email;
@@ -180,8 +180,10 @@ class EmployeeController extends Controller
             ]);
     }
 
-    /**
 
+
+    /**
+     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

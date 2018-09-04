@@ -21,11 +21,13 @@
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
+
 				@if(Auth::user()->role != "employee" )
 					<li><a href="{{ route('departments.index') }}">Departments</a></li>
 					<li><a href="{{ route('roles.index') }}">Roles</a></li>
 					<li><a href="{{ route('employees.index') }}">Employees</a></li>	
 				@endif
+
 				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
                  <script type="text/javascript">window.onload = date_time('date_time');</script></a>
                 </li>
@@ -41,6 +43,7 @@
 				@else
 					<li><a href="{{ route('home') }}">Dashboard</a></li>
 					<li class="dropdown">
+
 						<a href="#" class="dropdown-toggle" data-target="#test" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
 							{{ Auth::user()->name }} <span class="caret"></span>
 						</a>

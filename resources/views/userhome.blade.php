@@ -6,6 +6,7 @@
 <div class="row" style="margin-top: -2%;">
 		<div class="col-md-12" style=" text-align: center; padding: 10px 10px 10px 10px;	" >
 			<img src="{{url('assets/img/company.png')}}" style="height: 45px" alt="Company Logo"> 
+
 			<h3 style="margin-top:.5%;">Payroll System</h3>	
 			
 		</div>
@@ -29,6 +30,7 @@
 <div class="row box-white padding-5" ">
 
 	<table width="30%" border="0">
+
 			<td>
 				<h4 style="text-align: center;">Date:</h4>
 			</td>
@@ -42,6 +44,7 @@
 				<input type="button" class="btn btn-primary" value="Search">
 			</td>
 	</table>
+
 </div>
 <div class="row box-white padding-20" style="margin-top: 1%;">
 
@@ -50,6 +53,7 @@
 <table>
 	<h4><b> Profile </b></h4>
 	<tr>
+
 	<td>Name: 
 	<td><b>{{ $user_employee->name }}</b></td>
 	</tr>
@@ -63,9 +67,6 @@
 	</tr>
 	<tr>
 
-
-
-	
 </table>
 </div>
 <div class="col-md-6">
@@ -101,6 +102,7 @@
 <hr id="divider">
 
 <div class="row">
+
 	<div class="col-md-6" style="border: 1px;">
 		<table>
 			<tr>
@@ -135,6 +137,6 @@
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+
 
 @endsection
