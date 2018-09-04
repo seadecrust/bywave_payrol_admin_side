@@ -44,7 +44,7 @@
 		<div class="form-group col-lg-3">
 			<label for="salary">Salary: </label>
 			<input type="text" name="salary" value="{{ $employee->salary}}" class="form-control" 
-			 	{{ $employee->role == "admin" ? '' : 'disabled' }}>	
+			 	{{ Auth::user()->role == "admin" ? '' : 'disabled' }}>	
 			 	@if( $employee->role != "admin" )
 			 		<input type="hidden" name="salary" value="{{ $employee->salary}}" class="form-control">	
 			 	@endif
@@ -52,7 +52,7 @@
 		
 		<div class="form-group col-lg-3">
 			<label for="role">Select a Role</label>
-			<select name="role_id"  cols="5" rows="5" class="form-control" {{ $employee->role == "admin" ? '' : 'disabled' }}> 		
+			<select name="role_id"  cols="5" rows="5" class="form-control" {{ Auth::user()->role == "admin" ? '' : 'disabled' }}> 		
 				@foreach($roles as $role)
 					<option value="{{ $role->id}}"
 						@if($employee->role->id == $role->id)
@@ -69,7 +69,7 @@
 		<div class="form-group col-lg-3">
 			<label for="full_time">Position:</label>
 
-			<select name="full_time" id="full_time" class="form-control" {{ $employee->role == "admin" ? '' : 'disabled' }}>
+			<select name="full_time" id="full_time" class="form-control" {{ Auth::user()->role == "admin" ? '' : 'disabled' }}>
 				<option value="1">Full-Time</option>
 				<option value="0">Part-Time</option>					
 			</select>
@@ -77,8 +77,7 @@
 			 		<input type="hidden" name="full_time" value="{{ $role->id }}" class="form-control">	
 			 @endif
 		</div>
-
-		<!-- <div class="form-group col-md-3">
+	<!-- <div class="form-group col-md-3">
 			<label for="datestarted">Date Started: </label>
 			<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control">		
 		</div>
