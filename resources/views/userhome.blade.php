@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="row" style="margin-top: -2%;">
-		<div class="col-md-12" style=" text-align: center; padding: 10px 10px 10px 10px;	" >
+		<div class="col-md-12" style=" text-align: center; padding: 10px 10px 10px 10px;>
 			<img src="{{url('assets/img/company.png')}}" style="height: 45px" alt="Company Logo"> 
 
 			<h3 style="margin-top:.5%;">Payroll System</h3>	
@@ -19,6 +19,15 @@
   <title>Employee</title>
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $("#datepicker").datepicker();
+  } );
+</script>
 {{-- <link href="assets/css/AddedDesign.css" rel="stylesheet"/> --}}
 {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet"/>
  --}}
@@ -36,7 +45,7 @@
 			</td>
 			<td>
 				<div class="input-group date">
-	  				<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+	  				<input type="text" class="form-control" id="datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
 			</td>
 
@@ -104,27 +113,17 @@
 <div class="row">
 
 	<div class="col-md-6" style="border: 1px;">
-		<table>
+		<table class="table table-condensed table-responsive">
+		<thead>
 			<tr>
-				<td>Salary Received: </td>
-				<td><b> </b></td>
+				<th>Salary Received: </th>
+				<th>From: </th>
+				<th>Amount: </th>
+				<th><b>Total:</b></th>
 			</tr>
-			<tr>
-				<td>From: </td>
-				<td><b></b></td>
-			</tr>
-			<tr>
-				<td>Amount: </td>
-				<td><b></b></td>
-			</tr>
-			<tr>
-				<td>Others: </td>
-				<td><b></b></td>
-			</tr>
-			<tr>
-				<td><b>Total:</b></td>
-				<td class="underline"><b></b></td>
-			</tr>
+		</thead>
+		<tbody id="payroll-tbody"></tbody>
+
 		</table>
 	</div>
 </div>
@@ -136,7 +135,28 @@
 </body>
 </html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		url: "{{ url('/') }}/payroll/getPayroll/2/2018-09-04 11:09:09",
+		method: "get",
+		success: function(data){
+			var table = $("#payroll-tbody");
+			var row = "";
+			$.each(data, function(key, value){
+				row +=`<tr>
+						<td>`+value["created_at"]+`</td>
+						<td>N/A</td>
+						<td>`+value["gross"]+`</td>
+						<td>`+value["gross"]+`</td>
+			   		</tr>`;	
+			});
+			table.empty();
+			table.append(row);
+			
+			 
+		}
+	});
 
+</script>
 
 @endsection

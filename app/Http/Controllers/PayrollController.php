@@ -64,6 +64,13 @@ class PayrollController extends Controller
         return view('payroll.payroll')->with('employee',$employee);
     }
 
+    public function getPayroll($id, $date){
+    	$payroll = Payroll::where('employee_id', $id)
+    					->where('created_at', $date)->get();
+
+    	 return $payroll;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
