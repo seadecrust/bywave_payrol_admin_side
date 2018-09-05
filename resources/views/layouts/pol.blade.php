@@ -1,4 +1,6 @@
+
 <script type="text/javascript" src="{{asset('js/date_time.js')}}"></script>
+
 
 <nav class="navbar navbar-default navbar-static-top" style="background-color:#ffddc1;">
 	<div class="container">
@@ -38,7 +40,7 @@
 				@else
 					<li><a href="{{ route('home') }}">Dashboard</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-target="#test" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" >
+						<a class="dropdown-toggle" data-toggle="dropdown" >
 							{{ Auth::user()->name }} <span class="caret"></span>
 						</a>
 

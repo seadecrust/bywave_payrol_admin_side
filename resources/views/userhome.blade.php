@@ -18,14 +18,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Employee</title>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $(function() {
-    $("#datepicker").datepicker();
+
+    $("#datepicker").datepicker({
+    	dateFormat: 'yy-mm-dd'
+    });
+
   } );
 </script>
 {{-- <link href="assets/css/AddedDesign.css" rel="stylesheet"/> --}}
@@ -136,26 +136,66 @@
 </html>
 
 <script type="text/javascript">
-	$.ajax({
-		url: "{{ url('/') }}/payroll/getPayroll/2/2018-09-04 11:09:09",
-		method: "get",
-		success: function(data){
-			var table = $("#payroll-tbody");
-			var row = "";
-			$.each(data, function(key, value){
-				row +=`<tr>
-						<td>`+value["created_at"]+`</td>
-						<td>N/A</td>
-						<td>`+value["gross"]+`</td>
-						<td>`+value["gross"]+`</td>
-			   		</tr>`;	
-			});
-			table.empty();
-			table.append(row);
-			
-			 
-		}
+
+$(function(){
+
+	$("#datepicker").change(function(){
+		$.ajax({
+			url: "{{ url('/') }}/payroll/getPayroll/{{ $user_employee->id }}/"+$("#datepicker").val(),
+			method: "get",
+			success: function(data){
+				var table = $("#payroll-tbody");
+				var row = "";
+				$.each(data, function(key, value){
+					row +=`<tr>
+							<td>`+value["created_at"]+`</td>
+							<td>N/A</td>
+							<td>`+value["gross"]+`</td>
+							<td>`+value["gross"]+`</td>
+				   		</tr>`;	
+				});
+				table.empty();
+				table.append(row);
+				
+				 
+			}
+		});
 	});
+
+	(function(){
+		var today = new Date();
+		var day = (today.getDate() < 10 ? '0'+today.getDate() : today.getDate() );
+		var month = (today.getMonth()+1 < 10 ? '0'+(today.getMonth()+1) : today.getMonth()+1 );
+		var year = today.getFullYear();
+		var completeDate = year+"-"+month+"-"+day;
+
+		
+		$.ajax({
+			url: "{{ url('/') }}/payroll/getPayroll/{{ $user_employee->id }}/"+completeDate,
+			method: "get",
+			success: function(data){
+				var table = $("#payroll-tbody");
+				var row = "";
+				$.each(data, function(key, value){
+					row +=`<tr>
+							<td>`+value["created_at"]+`</td>
+							<td>N/A</td>
+							<td>`+value["gross"]+`</td>
+							<td>`+value["gross"]+`</td>
+				   		</tr>`;	
+				});
+				table.empty();
+				table.append(row);
+				
+				 
+			}
+		});
+
+
+	}());
+
+});
+	
 
 </script>
 

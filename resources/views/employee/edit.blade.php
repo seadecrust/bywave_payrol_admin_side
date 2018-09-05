@@ -90,8 +90,10 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: (YYYY-MM-DD)</label>
-  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" ><span class="input-group-addon"></i></span>
-
+  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" {{ Auth::user()->role == "admin" ? '' : 'disabled' }}><span class="input-group-addon" ></i></span>
+  				@if( $employee->role != "admin" )
+			 		<input type="hidden" name="datestarted" value="{{ $employee->datestarted }}" class="form-control">	
+			 	@endif
 			</div>
 		</td>
 		</div>

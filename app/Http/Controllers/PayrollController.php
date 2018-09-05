@@ -14,6 +14,7 @@ class PayrollController extends Controller
      public function __construct()
     {
         $this->middleware('auth');
+        date_default_timezone_set('Asia/Manila');
     }
     /**
      * Show the form for creating a new resource.
@@ -65,8 +66,10 @@ class PayrollController extends Controller
     }
 
     public function getPayroll($id, $date){
+        $dateStarted = $date." 00:00:00";
+        $dateEnd = $date." 23:59:59";
     	$payroll = Payroll::where('employee_id', $id)
-    					->where('created_at', $date)->get();
+    					->whereBetween('created_at', [$dateStarted, $dateEnd])->get();
 
     	 return $payroll;
     }
