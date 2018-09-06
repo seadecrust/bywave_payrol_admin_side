@@ -67,6 +67,14 @@
 	<td><b>{{ $user_employee->name }}</b></td>
 	</tr>
 	<tr>
+	<td>Role: 
+	<td><b>{{ $user_employee->role->name}}</b></td>
+	</tr>
+	<tr>
+	<td>Department: 
+	<td><b></b></td>
+	</tr>
+	<tr>
 	<td>Base Salary: </td>
 	<td><b>{{ $user_employee->salary }}</b></td>
 	</tr>
@@ -177,18 +185,29 @@ $(function(){
 				var table = $("#payroll-tbody");
 				var row = "";
 				$.each(data, function(key, value){
+					var num = parseInt(value["gross"]);
+						num = num.toLocaleString('en-US', { minimumFractionDigits: 2 });	
+					var date = new Date(value["created_at"]);
+						date = String(date);
+					    date = date.split(" ");
+					    date = date[1]+" "+date[2]+" "+date[3];
+
 					row +=`<tr>
-							<td>`+value["created_at"]+`</td>
+							<td>`+date+`</td>
 							<td>N/A</td>
-							<td>`+value["gross"]+`</td>
-							<td>`+value["gross"]+`</td>
+							<td>`+num+`</td>
+							<td>`+num+`</td>
 				   		</tr>`;	
 				});
 				table.empty();
 				table.append(row);
+
+			
 				
-				 
+				
 			}
+				
+				
 		});
 
 
@@ -196,7 +215,6 @@ $(function(){
 
 });
 	
-
 </script>
 
 @endsection

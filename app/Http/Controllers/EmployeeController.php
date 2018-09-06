@@ -62,47 +62,49 @@ class EmployeeController extends Controller
 			'phone' => 'required',
 			'address' => 'required',
 			'datestarted' => 'required',
-			'full_time' => 'required|bool',
+			'full_time' => 'required',
 			'password' => 'required',
 			'role_id' => 'required'
 		]);
 
-		$users = new User;
-		$users ->name = $request->name;
-		$users ->email = $request->email;
-		$users ->password = bcrypt($request->password);
-		$users ->role = 'employee';	
-		$users->save();
-		
-		$employee = Employee::create([
-			'fk_employee' => $users->id,
-			'name' => $request->name,
-			'slug' =>str_slug($request->name),
-			'idnum' => $request->idnum,
-			'email' => $request->email,
-			'salary' => $request->salary,
-			'phone' => $request->phone,
-			'address' => $request->address,
-			'datestarted' => $request->datestarted,
-			'full_time' => $request->full_time,
-			'password' => bcrypt($request->password),
-			'role_id' => $request->role_id,	
-		]);
-		
-		$payroll = new Payroll;
-		$payroll->employee_id = $employee->id;
-		$payroll->save();
-		$employee->save();
+        $userDuplicate = User::where('email', '=', $request->email)->get();
 
-		$request->session()->flash('status', 'New Employee created');
+		if($userDuplicate->count() > 0){
+				return redirect()->route('employees.index')->with('error', "Email Address exists.");
+		}else{
 
-		return redirect()->route('employees.index');
+				$users = new User;
+				$users ->name = $request->name;
+				$users ->email = $request->email;
+				$users ->password = bcrypt($request->password);
+				$users ->role = 'employee';	
+				$users->save();
+				
+				$employee = Employee::create([
+					'fk_employee' => $users->id,
+					'name' => $request->name,
+					'slug' =>str_slug($request->name),
+					'idnum' => $request->idnum,
+					'email' => $request->email,
+					'salary' => $request->salary,
+					'phone' => $request->phone,
+					'address' => $request->address,
+					'datestarted' => $request->datestarted,
+					'full_time' => $request->full_time,
+					'password' => bcrypt($request->password),
+					'role_id' => $request->role_id,	
+				]);
+				
+				$payroll = new Payroll;
+				$payroll->employee_id = $employee->id;
+				$payroll->save();
+				$employee->save();
 
-		try{
-		    do_someting();
-		} catch(\Exception $e) {
-		    echo "ERROR";
-		}
+				$request->session()->flash('status', 'New Employee created');
+
+				return redirect()->route('employees.index');
+			}
+	
 
     }
 
@@ -148,7 +150,7 @@ class EmployeeController extends Controller
 			'phone' => 'required',
 			'address' => 'required',
 			'datestarted' => 'required',
-			'full_time' => 'required|bool',
+			'full_time' => 'required',
 			'password' => 'required',
 			'role_id' => 'required'
 		]);
@@ -162,7 +164,7 @@ class EmployeeController extends Controller
 		$employee->address = $request->address;
 		$employee->datestarted = $request->datestarted;
 		$employee->full_time = $request->full_time;
-		$employee->password = $request->password;
+		$employee->password = bcrypt($request->password);
 		$employee->role_id  = $request->role_id;		
 		$employee->save();
 

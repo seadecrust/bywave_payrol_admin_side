@@ -10,6 +10,9 @@
 	<div class="col-lg-12">
 		<h1 class="page-header">New Employee</h1>
 	</div>
+	{{-- @if(session($error))
+		{{ $error }}
+	@endif --}}
 	
 	<form action="{{ route('employees.store') }}" method="POST">
 			{{ csrf_field() }}
