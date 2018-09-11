@@ -20,7 +20,6 @@
 						<td>
 							<a href="{{ route('roles.show', ['slug'=>$role->slug])}}">{{ $role->name }}</a>
 						</td>
-						<td>{{ $role->salary }}</td>
 					</tr>
 				@endforeach
 			@else

@@ -14,7 +14,7 @@
 
 			<!-- Branding Image -->
 			<a class="navbar-brand" >
-				<img src="assets/img/company.png" style="height: 25px" alt="Company Logo"> 
+				<img src="/assets/img/company.png" style="height: 25px"> 
 			</a>
 		</div>
 
@@ -24,7 +24,7 @@
 				<li><a href="{{ route('departments.index') }}">Departments</a></li>
 				<li><a href="{{ route('roles.index') }}">Roles</a></li>
 				<li><a href="{{ route('employees.index') }}">Employees</a></li>	
-				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
+				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
                  <script type="text/javascript">window.onload = date_time('date_time');</script></a>
                 </li>
 			</ul>

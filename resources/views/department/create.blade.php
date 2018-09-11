@@ -12,7 +12,7 @@
 		
 		<div class="form-group col-lg-6">
 			<label for="name">Name</label>
-			<input type="text" name="name" class="form-control">
+			<input type="text" name="name" class="form-control" autocomplete="off">
 		</div>
 		
 		<div class="form-group col-lg-12">			

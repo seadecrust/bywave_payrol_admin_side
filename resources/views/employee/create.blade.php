@@ -12,37 +12,37 @@
 		
 		<div class="form-group col-md-6">
 			<label for="name">Name: </label>
-			<input type="text" name="name" class="form-control">		
+			<input type="text" name="name" class="form-control" autocomplete="off">		
 		</div>
 		
 		<div class="form-group col-md-2">
 			<label for="email">Email: </label>
-			<input type="email" name="email" class="form-control">		
+			<input type="email" name="email" class="form-control" autocomplete="off">		
 		</div>
 		<div class="form-group col-md-2">
 			<label for="phone">Contact: </label>
-			<input type="text" name="phone" class="form-control">		
+			<input type="text" name="phone" class="form-control" autocomplete="off">		
 		</div>
 
 		<div class="form-group col-md-2">
 			<label for="idnum">ID Number: </label>
-			<input type="text" name="idnum" class="form-control">		
+			<input type="text" name="idnum" class="form-control" autocomplete="off">		
 		</div>
 
 		<div class="form-group col-md-2" hidden="">
 			<label for="password">Password: </label>
-			<input type="password" name="password" value="password1234" class="form-control">		
+			<input type="password" name="password" value="password1234" class="form-control" autocomplete="off">		
 		</div>
 
 		
 		<div class="form-group col-md-12">
 			<label for="address">Address: </label>
-			<input type="text" name="address" class="form-control">		
+			<input type="text" name="address" class="form-control" autocomplete="off">		
 		</div>
 
 		<div class="form-group col-md-3">
 			<label for="salary">Salary: </label>
-			<input type="number" name="salary" class="form-control">		
+			<input type="number" name="salary" class="form-control" autocomplete="off">		
 		</div>
 		
 		<div class="form-group col-md-3">
@@ -68,7 +68,7 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
-  				<input type="text" name="datestarted"  id="datepicker" class="form-control"><span class="input-group-addon"></i></span>
+  				<input type="text" name="datestarted"  id="datepicker" class="form-control" autocomplete="off"><span class="input-group-addon" ></i></span>
 			</div>
 		</td>	
 	</div>

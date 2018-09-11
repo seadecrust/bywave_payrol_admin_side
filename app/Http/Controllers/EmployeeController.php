@@ -190,6 +190,9 @@ class EmployeeController extends Controller
     {
         $employee=Employee::findOrFail($id);
 		$employee->delete();
+
+		// $users = \Auth::user();  // delete user acc completely
+		// $users->delete();
 		
 		Session::flash('success','Employee deleted');
 		return redirect()->route('employees.index');
