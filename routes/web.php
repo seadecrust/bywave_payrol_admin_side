@@ -40,7 +40,7 @@ Route::get('/payroll/kill/{id}', 'PayrollController@kill')->name('payrolls.kill'
 
 Route::get('/payrolls/download/{id}','DownloadController@pdfDownload')->name('payrolls.pdf');
 Route::get('/payroll/single/{id}','DownloadController@singlePayroll')->name('singlepayroll.pdf');
-
+Route::get('/payroll/getPayroll/{id}/{date}', 'PayrollController@getPayroll');
 Route::resources([
 	'departments' => 'DepartmentController',
 	'roles' => 'RoleController',

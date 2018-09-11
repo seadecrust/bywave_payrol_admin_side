@@ -30,7 +30,7 @@
 			@if($employees->count()> 0)
 				@foreach($employees as $employee)
 					<tr>								
-						<td><a href="{{ route('employees.show', ['id' => $employee->id]) }}">{{ $employee->name }}</a></td>
+						<td><a href="{{ route('employees.show', ['id' => $employee->fk_employee]) }}">{{ $employee->name }}</a></td>
 						<td>{{ $employee->idnum }}</td>
 						<td>{{ $employee->email }}</td>
 						<td>{{ $employee->salary }}</td>
@@ -39,7 +39,7 @@
 						<td>{{ $employee->datestarted }}</td>
 						
 						<td>
-							<a href="{{ route('employees.edit', ['id' => $employee->id]) }}" class="btn btn-info">Edit</a>
+							<a href="{{ route('employees.edit', ['id' => $employee->fk_employee]) }}" class="btn btn-info">Edit</a>
 						</td>
 						<td>
 							<form action="{{ route('employees.destroy', ['id' => $employee->id]) }}" method="POST">

@@ -2,10 +2,17 @@
 
 
 @section('content')
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
 	<div class="col-lg-12">
 		<h1 class="page-header">New Employee</h1>
 	</div>
+	{{-- @if(session($error))
+		{{ $error }}
+	@endif --}}
 	
 	<form action="{{ route('employees.store') }}" method="POST">
 			{{ csrf_field() }}
@@ -68,7 +75,13 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
+<<<<<<< HEAD
   				<input type="text" name="datestarted"  id="datepicker" class="form-control" autocomplete="off"><span class="input-group-addon" ></i></span>
+=======
+
+  				<input type="text" name="datestarted"  id="datepicker" class="form-control"><span class="input-group-addon"></i></span>
+
+>>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 			</div>
 		</td>	
 	</div>
@@ -79,6 +92,4 @@
 		</div>
 	</form>
 	
-
- 
 @endsection

@@ -10,8 +10,6 @@ use Session;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
-
-
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -45,10 +43,7 @@ class EmployeeController extends Controller
 		}
         return view('employee.create')->with('roles',$roles);
 
-        
     }
-
-
 
 
     /**
@@ -67,44 +62,49 @@ class EmployeeController extends Controller
 			'phone' => 'required',
 			'address' => 'required',
 			'datestarted' => 'required',
-			'full_time' => 'required|bool',
+			'full_time' => 'required',
 			'password' => 'required',
 			'role_id' => 'required'
 		]);
-		
-		$employee = Employee::create([
-			'name' => $request->name,
-			'slug' =>str_slug($request->name),
-			'idnum' => $request->idnum,
-			'email' => $request->email,
-			'salary' => $request->salary,
-			'phone' => $request->phone,
-			'address' => $request->address,
-			'datestarted' => $request->datestarted,
-			'full_time' => $request->full_time,
-			'password' => bcrypt($request->password),
-			'role_id' => $request->role_id,	
-		]);
-		
-		$payroll = new Payroll;
-		$payroll->employee_id = $employee->id;
-		$payroll->save();
-		$employee->save();
-		$users = new User;
-		$users ->name = $employee->name;
-		$users ->email = $employee->email;
-		$users ->password = $employee->password;
-		$users ->role = 'employee';	
-		$users->save();
-		
-		
-		$request->session()->flash('status', 'New Employee Created');
-		return redirect()->route('employees.index');
-		try{
-    do_someting();
-} catch(\Exception $e) {
-    echo "ERROR";
-}
+
+        $userDuplicate = User::where('email', '=', $request->email)->get();
+
+		if($userDuplicate->count() > 0){
+				return redirect()->route('employees.index')->with('error', "Email Address exists.");
+		}else{
+
+				$users = new User;
+				$users ->name = $request->name;
+				$users ->email = $request->email;
+				$users ->password = bcrypt($request->password);
+				$users ->role = 'employee';	
+				$users->save();
+				
+				$employee = Employee::create([
+					'fk_employee' => $users->id,
+					'name' => $request->name,
+					'slug' =>str_slug($request->name),
+					'idnum' => $request->idnum,
+					'email' => $request->email,
+					'salary' => $request->salary,
+					'phone' => $request->phone,
+					'address' => $request->address,
+					'datestarted' => $request->datestarted,
+					'full_time' => $request->full_time,
+					'password' => bcrypt($request->password),
+					'role_id' => $request->role_id,	
+				]);
+				
+				$payroll = new Payroll;
+				$payroll->employee_id = $employee->id;
+				$payroll->save();
+				$employee->save();
+
+				$request->session()->flash('status', 'New Employee created');
+
+				return redirect()->route('employees.index');
+			}
+	
 
     }
 
@@ -127,11 +127,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        return view('employee.edit', ['employee'=>Employee::find($id),
+        return view('employee.edit', ['employee'=>Employee::where('fk_employee', $id)->first(),
 											'roles'=>Role::all()]);
     }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -152,7 +150,7 @@ class EmployeeController extends Controller
 			'phone' => 'required',
 			'address' => 'required',
 			'datestarted' => 'required',
-			'full_time' => 'required|bool',
+			'full_time' => 'required',
 			'password' => 'required',
 			'role_id' => 'required'
 		]);
@@ -166,19 +164,25 @@ class EmployeeController extends Controller
 		$employee->address = $request->address;
 		$employee->datestarted = $request->datestarted;
 		$employee->full_time = $request->full_time;
-		$employee->password = $request->password;
+		$employee->password = bcrypt($request->password);
 		$employee->role_id  = $request->role_id;		
 		$employee->save();
-		// $users = \Auth::user();
-		// $users ->name = $employee->name;
-		// $users ->email = $employee->email;
-		// $users ->password = $employee->password;
-		// $users ->role = 'employee';	
-		// $users->save();
-		
+
+
+		$user = User::findOrFail($employee->fk_employee);
+		$user->name = $employee->name;
+		$user->email = $employee->email;
+		$user->password = $employee->password;
+		$user->role = 'employee';	
+		$user->save();
+
 		$request->session()->flash('status', 'New Employee created');
-		return redirect()->route('employees.index'); 
+		return (Auth::user()->role == "admin" ) ? redirect()->route('employees.index') : view('/userhome', [
+                    'user_employee' => $employee
+            ]);
     }
+
+
 
     /**
      * Remove the specified resource from storage.

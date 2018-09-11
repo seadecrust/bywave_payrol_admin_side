@@ -1,66 +1,53 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('content')
-<nav class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<div class="navbar-header">
+    <title>{{ config('lol.name', 'Bywave') }}</title>
 
-			<!-- Collapsed Hamburger -->
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-				<span class="sr-only">Toggle Navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="Stylesheet" type="text/css" />
 
-			<!-- Branding Image -->
-			<a class="navbar-brand" href="{{ url('/') }}">
-				{{ config('app.name', 'Payroll') }}
-			</a>
+	
+</head>
+<body>
+    <div id="lol">
+        @include('layouts.pol');
+		
+		<div class="container">
+			<div class="row">
+				<div class="box">					
+					@yield('content')					
+				</div>
+			<div>
 		</div>
+		
+    </div>
 
-		<div class="collapse navbar-collapse" id="app-navbar-collapse">
-			<!-- Left Side Of Navbar -->
-			<ul class="nav navbar-nav">
-				<li><a href="{{ route('departments.index') }}">asd</a></li>
-				<li><a href="{{ route('roles.index') }}">Roles</a></li>
-				<li><a href="{{ route('employees.index') }}">Payroll</a></li>
+    <!-- Scripts -->
+   {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
+{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-			</ul>
-
-
-			<!-- Right Side Of Navbar -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- Authentication Links -->
-				@guest
-					<li><a href="{{ route('login') }}">Login</a></li>
-					<li><a href="{{ route('register') }}">Register</a></li>
-					
-				@else
-					<li><a href="{{ route('home') }}">Dashboard</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-							{{ Auth::user()->name }} <span class="caret"></span>
-						</a>
-
-						<ul class="dropdown-menu">
-							<li>
-								<a href="{{ route('logout') }}"
-									onclick="event.preventDefault();
-											 document.getElementById('logout-form').submit();">
-									Logout
-								</a>
-
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									{{ csrf_field() }}
-								</form>
-							</li>
-						</ul>
-					</li>
-				@endguest
-			</ul>
-		</div>
-	</div>
-</nav>
-@endsection
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+	<script>
+		@if(Session::has('success'))
+			toastr.success("{{ Session::get('success')}}")		
+		@endif
+		
+		@if(Session::has('info'))
+			toastr.info("{{ Session::get('info')}}")		
+		@endif	
+	</script>
+</body>
+</html>

@@ -39,7 +39,12 @@ class HomeController extends Controller
                             'roles' => Role::count(),
                             'departments' => Department::count()]);
     } else if ($user->role === "employee"){
-        return view('/userhome');
+        $employee = Employee::where('fk_employee', $id)->first();
+
+        return view('/userhome', [
+                    'user_employee' => $employee
+            ]);
+
     }
 
        
