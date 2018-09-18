@@ -226,7 +226,7 @@ class EmployeeController extends Controller
     	$passwordData = $_POST['data'];
 
     	$employee = Employee::findOrFail($passwordData['id']);
-    	$employee->password = bcrypt($passwordData['new']);
+    	$employee->password = bcrypt($passwordData['new']); 
     	$employee->save();
 
     	$user = User::findOrFail($employee->fk_employee);
@@ -274,5 +274,17 @@ class EmployeeController extends Controller
 		
 		Session::flash('success', 'The employee account has been permanently destroyed.');
 		return redirect()->route('employees.index');
+	}
+
+	public function resetPassword($id){
+		$employee = Employee::findOrFail($id);
+		$employee->password = bcrypt("password1234");
+		$employee->save();
+
+		$user = User::findOrFail($employee->fk_employee);
+		$user->password = $employee->password;
+		$user->save();
+
+		return $employee->password;
 	}
 }
