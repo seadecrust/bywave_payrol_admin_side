@@ -20,12 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/reset/{id}', 'EmployeeController@resetPassword');
 
 
 Route::get('/employees/bin', 'EmployeeController@bin')->name('employees.bin');
 Route::get('/employees/restore/{id}', 'EmployeeController@restore')->name('employees.restore');
 Route::get('/employees/kill/{id}', 'EmployeeController@kill')->name('employees.kill');
-
+Route::post('/employee/changePass', 'EmployeeController@updatePassword');
 
 Route::get('/employee/payroll/{id}', 'PayrollController@payrollIndex')->name('payrolls.show');
 Route::get('/payrolls/create/{id}', 'PayrollController@create')->name('payrolls.create');

@@ -155,31 +155,83 @@ class EmployeeController extends Controller
 			'role_id' => 'required'
 		]);
 				
-		$employee->name = $request->name;
-		$employee->slug = str_slug($request->name);
-		$employee->idnum = $request->idnum;
-		$employee->email = $request->email;
-		$employee->salary = $request->salary;
-		$employee->phone = $request->phone;
-		$employee->address = $request->address;
-		$employee->datestarted = $request->datestarted;
-		$employee->full_time = $request->full_time;
-		$employee->password = bcrypt($request->password);
-		$employee->role_id  = $request->role_id;		
-		$employee->save();
+		
+		if(Auth::user()->role == 'admin'){
+
+			$employee->name = $request->name;
+			$employee->slug = str_slug($request->name);
+			$employee->idnum = $request->idnum;
+			$employee->email = $request->email;
+			$employee->salary = $request->salary;
+			$employee->phone = $request->phone;
+			$employee->address = $request->address;
+			$employee->datestarted = $request->datestarted;
+			$employee->full_time = $request->full_time;
+			
+			if($employee->password == $request->password){				
+				$employee->password = $request->password;
+			}else{
+				$employee->password = bcrypt($request->password);
+			}
+
+			$employee->role_id  = $request->role_id;		
+			$employee->save();
 
 
-		$user = User::findOrFail($employee->fk_employee);
-		$user->name = $employee->name;
-		$user->email = $employee->email;
-		$user->password = $employee->password;
-		$user->role = 'employee';	
-		$user->save();
+			$user = User::findOrFail($employee->fk_employee);
+			$user->name = $employee->name;
+			$user->email = $employee->email;
+			$user->password = $employee->password;
+			$user->role = 'employee';	
+			$user->save();
+
+	}else{
+
+			$employee->name = $request->name;
+			$employee->slug = str_slug($request->name);
+			$employee->idnum = $request->idnum;
+			$employee->email = $request->email;
+			$employee->salary = $request->salary;
+			$employee->phone = $request->phone;
+			$employee->address = $request->address;
+			$employee->datestarted = $request->datestarted;
+			$employee->full_time = $request->full_time;
+
+			if($employee->password == $request->password){
+				$employee->password = $request->password;
+			}else{
+				$employee->password = bcrypt($request->password);
+			}
+			
+			$employee->role_id  = $request->role_id;		
+			$employee->save();
+
+
+			$user = Auth::user();
+			$user->name = $employee->name;
+			$user->email = $employee->email;
+			$user->password = $employee->password;
+			$user->role = 'employee';	
+			$user->save();
+	}
 
 		$request->session()->flash('status', 'New Employee created');
+	
 		return (Auth::user()->role == "admin" ) ? redirect()->route('employees.index') : view('/userhome', [
                     'user_employee' => $employee
             ]);
+    }
+
+    public function updatePassword(){
+    	$passwordData = $_POST['data'];
+
+    	$employee = Employee::findOrFail($passwordData['id']);
+    	$employee->password = bcrypt($passwordData['new']); 
+    	$employee->save();
+
+    	$user = User::findOrFail($employee->fk_employee);
+    	$user->password = $employee->password;
+    	$user->save();
     }
 
 
@@ -225,5 +277,17 @@ class EmployeeController extends Controller
 		
 		Session::flash('success', 'The employee account has been permanently destroyed.');
 		return redirect()->route('employees.index');
+	}
+
+	public function resetPassword($id){
+		$employee = Employee::findOrFail($id);
+		$employee->password = bcrypt("password1234");
+		$employee->save();
+
+		$user = User::findOrFail($employee->fk_employee);
+		$user->password = $employee->password;
+		$user->save();
+
+		return $employee->password;
 	}
 }
