@@ -72,7 +72,7 @@
 	</tr>
 	<tr>
 	<td>Department: 
-	<td><b></b></td>
+	<td><b>{{ $user_employee->role->department->name}}</b></td>
 	</tr>
 	<tr>
 	<td>Base Salary: </td>

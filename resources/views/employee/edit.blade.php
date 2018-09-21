@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 
 
@@ -16,65 +15,37 @@
 			
 		<div class="form-group col-md-6">
 			<label for="name">Name: </label>
-<<<<<<< HEAD
 			<input type="text" name="name" value="{{ $employee->name}}" class="form-control" >		
-=======
-
-			<input type="text" name="name" value="{{ $employee->name}}" class="form-control">		
-
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 		</div>
 		
 		<div class="form-group col-md-2">
 			<label for="email">Email: </label>
-<<<<<<< HEAD
 			<input type="email" name="email" value="{{ $employee->email}}" class="form-control" >		
 		</div>
 		<div class="form-group col-md-2">
 			<label for="phone">Contact: </label>
 			<input type="text" name="phone" value="{{ $employee->phone}}" class="form-control" >		
-=======
-			<input type="email" name="email" value="{{ $employee->email}}" class="form-control">		
-		</div>
-		<div class="form-group col-md-2">
-			<label for="phone">Contact: </label>
-			<input type="text" name="phone" value="{{ $employee->phone}}" class="form-control">		
-
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 		</div>
 		
 		<div class="form-group col-md-2">
 			<label for="idnum">ID Number: </label>
-<<<<<<< HEAD
 			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control" >		
-=======
-			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control">		
-
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 		</div>
 
-		<div class="form-group col-md-2" hidden="">
+		<div class="form-group col-md-2">
 			<label for="password">Password: </label>
-<<<<<<< HEAD
 			<input type="password" name="password" value="{{ $employee->password}}" class="form-control" >		
-=======
-			<input type="password" name="password" value="{{ $employee->password}}" class="form-control">		
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 		</div>
 		
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-10">
 			<label for="address">Address: </label>
-<<<<<<< HEAD
 			<input type="text" name="address" value="{{ $employee->address }}" class="form-control" >		
-=======
-			<input type="text" name="address" value="{{ $employee->address }}" class="form-control">		
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 		</div>
 		
 		<div class="form-group col-lg-3">
 			<label for="salary">Salary: </label>
 			<input type="text" name="salary" value="{{ $employee->salary}}" class="form-control" 
-			 	{{ Auth::user()->role == "admin" ? '' : 'disabled' }}>	
+			 	{{ Auth::user()->role == "admin" ? '' : 'readonly' }}	
 			 	@if( $employee->role != "admin" )
 			 		<input type="hidden" name="salary" value="{{ $employee->salary}}" class="form-control">	
 			 	@endif
@@ -113,16 +84,11 @@
 		
 		<td>
 			<div class="input-group date">
-<<<<<<< HEAD
-				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
-  				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" readonly="readonly"><span class="input-group-addon" ></i></span>
-=======
 				<label for="datestarted">Date Started: (YYYY-MM-DD)</label>
   				<input type="text" name="datestarted"  id="date" value="{{ $employee->datestarted}}" class="form-control" {{ Auth::user()->role == "admin" ? '' : 'disabled' }}><span class="input-group-addon" ></i></span>
   				@if( $employee->role != "admin" )
 			 		<input type="hidden" name="datestarted" value="{{ $employee->datestarted }}" class="form-control">	
 			 	@endif
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 			</div>
 		</td>
 		</div>

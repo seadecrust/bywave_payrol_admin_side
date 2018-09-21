@@ -16,9 +16,12 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 </head>
+
 <body>
     <div id="app">
-        @include('layouts.nav');
+@include('layouts.nav');
+
+        
 		
 		<div class="container">
 			<div class="row">

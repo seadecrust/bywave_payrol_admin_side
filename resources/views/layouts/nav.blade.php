@@ -13,34 +13,21 @@
 			</button>
 
 			<!-- Branding Image -->
-<<<<<<< HEAD
 			<a class="navbar-brand" >
 				<img src="/assets/img/company.png" style="height: 25px"> 
-=======
 			<a class="navbar-brand" href="{{ url('/') }}">
-				{{ config('app.name', 'Payroll') }}
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 			</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
-<<<<<<< HEAD
+				@if(Auth::user()->role !="employee")
 				<li><a href="{{ route('departments.index') }}">Departments</a></li>
 				<li><a href="{{ route('roles.index') }}">Roles</a></li>
-				<li><a href="{{ route('employees.index') }}">Employees</a></li>	
+				<li><a href="{{ route('employees.index') }}">Employees</a></li>
+				@endif	
 				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
-=======
-
-				@if(Auth::user()->role != "employee" )
-					<li><a href="{{ route('departments.index') }}">Departments</a></li>
-					<li><a href="{{ route('roles.index') }}">Roles</a></li>
-					<li><a href="{{ route('employees.index') }}">Employees</a></li>	
-				@endif
-
-				<li> <a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="date_time"></span>
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
                  <script type="text/javascript">window.onload = date_time('date_time');</script></a>
                 </li>
 			</ul>

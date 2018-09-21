@@ -75,13 +75,7 @@
 		<td>
 			<div class="input-group date">
 				<label for="datestarted">Date Started: (YYYY-MM-DD) </label>
-<<<<<<< HEAD
   				<input type="text" name="datestarted"  id="datepicker" class="form-control" autocomplete="off"><span class="input-group-addon" ></i></span>
-=======
-
-  				<input type="text" name="datestarted"  id="datepicker" class="form-control"><span class="input-group-addon"></i></span>
-
->>>>>>> 283e69186d3c00e1780fa1e701090c503f6e4dd7
 			</div>
 		</td>	
 	</div>
