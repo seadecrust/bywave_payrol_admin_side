@@ -30,7 +30,7 @@
 			@if($employees->count()> 0)
 				@foreach($employees as $employee)
 					<tr>								
-						<td><a href="{{ route('employees.show', ['id' => $employee->fk_employee]) }}">{{ $employee->name }}</a></td>
+						<td><a href="{{ route('employees.show', ['id' => $employee->id]) }}">{{ $employee->name }}</a></td>
 						<td>{{ $employee->idnum }}</td>
 						<td>{{ $employee->email }}</td>
 						<td>{{ $employee->salary }}</td>

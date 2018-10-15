@@ -18,9 +18,16 @@ class CreatePayrollsTable extends Migration
 			$table->integer('employee_id');
 			$table->boolean('over_time')->default(0);
 			$table->boolean('notified')->default(0);
+            $table->integer('input_salary')->nullable();
 			$table->integer('hours')->nullable();
 			$table->integer('rate')->nullable();
-			$table->integer('gross')->nullable();	
+			$table->integer('gross')->nullable();
+            $table->integer('tax')->nullable();
+            $table->integer('philhealth')->nullable();
+            $table->integer('sss')->nullable();
+            $table->integer('pagibig')->nullable();
+            $table->integer('laptoprent')->nullable();
+            $table->integer('others')->nullable();
 			
 			$table->softDeletes();
             $table->timestamps();

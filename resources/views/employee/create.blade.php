@@ -48,7 +48,7 @@
 		</div>
 
 		<div class="form-group col-md-3">
-			<label for="salary">Salary: </label>
+			<label for="salary">Base Salary: </label>
 			<input type="number" name="salary" class="form-control" autocomplete="off">		
 		</div>
 		

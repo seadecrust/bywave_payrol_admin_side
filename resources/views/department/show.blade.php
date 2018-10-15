@@ -10,7 +10,6 @@
 	<table class= "table table-hover">
 		<thead>
 			<th>Role</th>
-			<th>Salary</th>
 		</thead>
 		
 		<tbody>

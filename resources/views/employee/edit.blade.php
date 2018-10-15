@@ -28,23 +28,22 @@
 		
 		<div class="form-group col-md-2">
 			<label for="idnum">ID Number: </label>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control" >		
 		</div>
 
 		<div class="form-group col-md-2">
 			<label for="password">Password: </label>
 			<input type="password" name="password" value="{{ $employee->password}}" class="form-control" >		
-=======
-			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control"  class="form-control" 
-			 	{{ Auth::user()->role == "admin" ? '' : 'readonly' }}>
+======= -->
+			<input type="text" name="idnum" value="{{ $employee->idnum}}" class="form-control"  class="form-control"  readonly >
+
 			 			
 		</div>
 
 		<div class="form-group col-md-2" >
 			<label for="password">Password: @if(Auth::user()->role == 'admin') <a id="reset_password">Reset Password</a>@endif </label>
 			<input type="password" name="password" value="{{ $employee->password}}" id="password-holder" class="form-control" readonly>	
->>>>>>> ab185ca7b550d1a88fc4ba71ffb0a4a7a721dc46
 		</div>
 		
 		<div class="form-group col-md-10">
@@ -55,11 +54,8 @@
 		<div class="form-group col-lg-3">
 			<label for="salary">Salary: </label>
 			<input type="text" name="salary" value="{{ $employee->salary}}" class="form-control" 
-<<<<<<< HEAD
-			 	{{ Auth::user()->role == "admin" ? '' : 'readonly' }}	
-=======
+
 			 	{{ Auth::user()->role == "admin" ? '' : 'readonly' }}>	
->>>>>>> ab185ca7b550d1a88fc4ba71ffb0a4a7a721dc46
 			 	@if( $employee->role != "admin" )
 			 		<input type="hidden" name="salary" value="{{ $employee->salary}}" class="form-control">	
 			 	@endif
@@ -212,7 +208,7 @@
 					new: $("#new-password").val(),
 				};
 
-				$.ajaxSetup({
+				$.ajaxSetup({	
 				  headers: {
 				    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				  }

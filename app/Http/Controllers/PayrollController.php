@@ -35,15 +35,21 @@ class PayrollController extends Controller
     public function store(Request $request, $id){
 		
 	   $this->validate($request,[
-			'hours'=> 'required',
-			'rate'=>'required',
+            'input_salary'=> 'required',
 			'over_time' => 'required|bool'
 		]);
 		
 	    $payroll = Payroll::create([
+            'input_salary' => $request->input_salary,
 			'hours' => $request->hours,
 			'rate' => $request->rate,
 			'over_time' => $request->over_time,
+            'tax'=> $request->tax,
+            'philhealth'=> $request->philhealth,
+            'sss'=> $request->sss,
+            'pagibig'=> $request->pagibig,
+            'laptoprent'=> $request->laptoprent,
+            'others'=> $request->others,
 			'employee_id' => $id
 		]);
 		
@@ -95,15 +101,21 @@ class PayrollController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-			'hours'=> 'required',
-			'rate'=>'required',
 			'over_time' => 'required|bool'
 		]);
 		
 		$payroll = Payroll::findOrFail($id);
+        $payroll->input_salary = $request->input_salary;
 		$payroll->hours = $request->hours;
 		$payroll->rate= $request->rate;
 		$payroll->over_time = $request->over_time;
+        $payroll->tax = $request->tax;
+        $payroll->philhealth = $request->philhealth;
+        $payroll->sss = $request->sss;
+        $payroll->pagibig = $request->pagibig;
+        $payroll->laptoprent = $request->laptoprent;
+        $payroll->others = $request->others;
+
 		$payroll->save();		
 		
 		$payroll->grossPay();

@@ -6,15 +6,12 @@
 <body>
 	<div class="container">
 		<div class="box">
-			<h1 class="page-header">Payslip</h1>
+			<h1 class="page-header">Payroll</h1>
 			
 			<address id="address-header">
 				<p>{{ $payroll->employee->name }}</p>
 				<p>{{ $payroll->employee->email }}</p>
-				<p>{{ $payroll->employee->street }}</p>
-				<p>{{ $payroll->employee->town }}</p>
-				<p>{{ $payroll->employee->city }}</p>
-				<p>{{ $payroll->employee->country }}</p>
+				<p>{{ $payroll->employee->address }}</p>
 			</address>		
 			
 			<hr>
@@ -38,7 +35,13 @@
 						<th>Over-Time</th>
 						<th>Hours</th>
 						<th>Rate</th>
-						<th>Gross</th>
+						<th>Laptop Rent</th>
+						<th style="color:#FF6666;">Tax</th>
+						<th style="color:#FF6666;">Philhealth</th>
+						<th style="color:#FF6666;">SSS</th>
+						<th style="color:#FF6666;">Pag-ibig</th>
+						<th style="color:#FF6666;">Others</th>
+						<th>Salary Given</th>
 					</tr>
 				</thead>									
 				<tbody>			
@@ -51,9 +54,15 @@
 								<b>No</b>							
 							@endif				
 						</td>
-						<td>{{ $payroll->hours }}</td>
-						<td>{{ $payroll->rate }}</td>
-						<td>{{ $payroll->gross }}</td>							
+								<td>{{ $payroll->hours }}</td>
+								<td>{{ $payroll->rate }}</td>
+								<td>{{ $payroll->laptoprent }}</td> 
+								<td>{{ $payroll->tax }}</td>
+								<td>{{ $payroll->philhealth }}</td>
+								<td>{{ $payroll->sss }}</td>
+								<td>{{ $payroll->pagibig }}</td>
+								<td>{{ $payroll->others }}</td>
+								<td>{{ $payroll->gross }}</td>								
 					</tr>					
 				</tbody>																			
 			</table>					

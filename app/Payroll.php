@@ -11,7 +11,7 @@ class Payroll extends Model
 	
 	protected $dates = ['deleted_at'];
 	
-	protected $fillable=['employee_id','over_time','hours','rate','total'];
+	protected $fillable=['employee_id','over_time','hours','rate','input_salary','tax','philhealth','sss','pagibig','laptoprent','others'];
 	
 	
 	public function employee(){
@@ -20,16 +20,18 @@ class Payroll extends Model
 	
 	public function grossPay(){
 		$calc = 0;
+		$deduction = $this->tax + $this->philhealth + $this->sss +$this->pagibig  + $this->others;
 		if($this->employee->full_time && !$this->over_time){
-			return $this->gross = $this->employee->salary;
+			$calc = $this->input_salary + $this->laptoprent;
+			return $this->gross = $calc - $deduction;
 		}
 		if($this->employee->full_time && $this->over_time){
-			$calc = $this->hours * $this->rate;
-			return $this->gross = $calc + $this->employee->salary;
+			$calc = $this->hours * $this->rate + $this->input_salary;
+			return $this->gross + $this->laptoprent = $calc - $deduction;
 		}
 		if($this->over_time || !$this->full_time){
-			$calc = $this->hours * $this->rate;
-			return $this->gross = $calc;
+			$calc = $this->hours * $this->rate + $this->input_salary;
+			return $this->gross = $calc - $deduction;
 		}
 		return $this->gross = 0;
 	}

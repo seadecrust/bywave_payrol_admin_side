@@ -33,7 +33,13 @@
 			<th>Over-Time</th>
 			<th>Hours</th>
 			<th>Rate</th>
-			<th>Gross</th>
+			<th>Laptop Rent</th>
+			<th style="color:#FF6666;">Tax</th>
+			<th style="color:#FF6666;">Philhealth</th>
+			<th style="color:#FF6666;">SSS</th>
+			<th style="color:#FF6666;">Pag-ibig</th>
+			<th style="color:#FF6666;">Others</th>
+			<th>Salary Given</th>
 			<th>Download</th>
 			<th>Edit</th>	
 			<th>Trash</th>
@@ -53,6 +59,12 @@
 						</td>
 						<td>{{ $payroll->hours }}</td>
 						<td>{{ $payroll->rate }}</td>
+						<td>{{ $payroll->laptoprent }}</td> 
+						<td>{{ $payroll->tax }}</td>
+						<td>{{ $payroll->philhealth }}</td>
+						<td>{{ $payroll->sss }}</td>
+						<td>{{ $payroll->pagibig }}</td>
+						<td>{{ $payroll->others }}</td>
 						<td>{{ $payroll->gross }}</td>
 						
 						<td><a href="{{ route('singlepayroll.pdf', ['id'=>$payroll->id]) }}" class="btn btn-info">PDF</a></td>
